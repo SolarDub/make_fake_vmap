@@ -59,10 +59,14 @@ While maps of all three components are produced, a discussion of radial map (wea
 
 Each component map can be expressed as a sum of an axisymmetric flow map and a convection flow map. For the east-west toroidal flow, this means a summation of the longitudinally directed rotation and the longitudinal component of the supergranulation flows. Conversely, the north-south poloidal flow is a summation of the latitudinally directed meridional circulation and the latitudinal component of the supergranulation flows.
 
+<img src="https://user-images.githubusercontent.com/81772405/222982231-cac5de0f-2bb5-441b-915f-5af2ea8c171d.jpg" width="400" />                  <img src="https://user-images.githubusercontent.com/81772405/222982234-f6d8555a-b430-427a-9adb-19fbe5ac5bc2.jpg" width="400" />
+
+<img src="https://user-images.githubusercontent.com/81772405/222982289-4020835e-b000-483d-967a-f4b9e1e4a059.jpg" width="400" />                  <img src="https://user-images.githubusercontent.com/81772405/222982293-92ce387f-9449-48f9-a5e9-dc50dbd867f4.jpg" width="400" />
+
+
 ![TorOnly](https://user-images.githubusercontent.com/81772405/222982231-cac5de0f-2bb5-441b-915f-5af2ea8c171d.jpg)   ![PolOnly](https://user-images.githubusercontent.com/81772405/222982234-f6d8555a-b430-427a-9adb-19fbe5ac5bc2.jpg)
 
 ![TorSG](https://user-images.githubusercontent.com/81772405/222982289-4020835e-b000-483d-967a-f4b9e1e4a059.jpg)   ![PolSG](https://user-images.githubusercontent.com/81772405/222982293-92ce387f-9449-48f9-a5e9-dc50dbd867f4.jpg)
-
 
 
 #### Toroidal Map
