@@ -59,21 +59,24 @@ While maps of all three components are produced, a discussion of radial map (wea
 
 Each component map can be expressed as a sum of an axisymmetric flow map and a convection flow map. For the east-west toroidal flow, this means a summation of the longitudinally directed rotation and the longitudinal component of the supergranulation flows. Conversely, the north-south poloidal flow is a summation of the latitudinally directed meridional circulation and the latitudinal component of the supergranulation flows.
 
-<img src="https://user-images.githubusercontent.com/81772405/222982231-cac5de0f-2bb5-441b-915f-5af2ea8c171d.jpg" width="400" />                  <img src="https://user-images.githubusercontent.com/81772405/222982234-f6d8555a-b430-427a-9adb-19fbe5ac5bc2.jpg" width="400" />
+In the three pairs of images below are:
 
-<img src="https://user-images.githubusercontent.com/81772405/222982289-4020835e-b000-483d-967a-f4b9e1e4a059.jpg" width="400" />                  <img src="https://user-images.githubusercontent.com/81772405/222982293-92ce387f-9449-48f9-a5e9-dc50dbd867f4.jpg" width="400" />
+1. Axisymmetric flows:  (Left) Rotation profile,        (Right) Meridional Circulation profile
+2. Supergranulation:    (Left) East-West component,     (Right) North-South component
+3. Summed flows:        (Left) East-West velocities,    (Right) North-South velocities
+
+Notes:
+
+1. The latitudinal-dependent profiles are seen in the north-south cross-sections to the right of the map.
+2. The supergranulation profiles are seen in both cross-sections as structured fluctations.
+3. The rotation dominates the toroidal map and the merdional circulation profile is barely seen below the supergranulation signal
+
+<img src="https://user-images.githubusercontent.com/81772405/222982231-cac5de0f-2bb5-441b-915f-5af2ea8c171d.jpg" width="500" />                  <img src="https://user-images.githubusercontent.com/81772405/222982234-f6d8555a-b430-427a-9adb-19fbe5ac5bc2.jpg" width="500" />
+
+<img src="https://user-images.githubusercontent.com/81772405/222982289-4020835e-b000-483d-967a-f4b9e1e4a059.jpg" width="500" />                  <img src="https://user-images.githubusercontent.com/81772405/222982293-92ce387f-9449-48f9-a5e9-dc50dbd867f4.jpg" width="500" />
+
+<img src="https://user-images.githubusercontent.com/81772405/222982588-cbe887c2-83db-4690-a4ef-055a330ddb39.jpg" width="500" />                  <img src="https://user-images.githubusercontent.com/81772405/222982591-d2c8cca7-2f5f-40de-aee5-0b0bd9c4795d.jpg" width="500" />
 
 
-![TorOnly](https://user-images.githubusercontent.com/81772405/222982231-cac5de0f-2bb5-441b-915f-5af2ea8c171d.jpg)   ![PolOnly](https://user-images.githubusercontent.com/81772405/222982234-f6d8555a-b430-427a-9adb-19fbe5ac5bc2.jpg)
+## Cellular Supergranulation Velocity Profiles
 
-![TorSG](https://user-images.githubusercontent.com/81772405/222982289-4020835e-b000-483d-967a-f4b9e1e4a059.jpg)   ![PolSG](https://user-images.githubusercontent.com/81772405/222982293-92ce387f-9449-48f9-a5e9-dc50dbd867f4.jpg)
-
-
-#### Toroidal Map
-
-
-
-#### Poloidal Map
-
-
-#### Radial Map
