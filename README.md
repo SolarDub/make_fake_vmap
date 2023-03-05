@@ -1,8 +1,9 @@
 # make_fake_vmap
-Production of velocity component maps of convection-like and axisymmetric flows manifesting at the solar surface.
+
+This repository is currently for demonstration purposes only.
 
 This program develops 3-component (toroidal, poloidal, radial) velocity maps of convection-like (supergranulation) 
-and axisymmetric (rotation and meridional circulation)flows as manifested at the solar surface.
+and axisymmetric (rotation and meridional circulation) flows manifesting at the solar surface.
 
 The solar rotation is directed toroidally (i.e. longitudinally) with a latitudinal variation profile. 
 The meridional circulation is directed poloidally (i.e. latitudinally), also with a latitudinal variation profile.
