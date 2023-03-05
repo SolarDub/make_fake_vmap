@@ -44,7 +44,7 @@ To execute the program, enter:
 The execution proceeds by reading in convection spectral amplitudes (from /inputspec/fakespec.txt) and writing those pertaining to the first 20 spherical-hamonic degrees, l, in three columns: radial, poloidal, toroidal.
 
 The global (spherical harmonic order, m = 0) toroidal rotation and poloidal meridional circulation spectra are calculated, followed by a calculation of the convection
-spectrum (radial and poloidal) for all spherical harmonic degrees, l, and orders, m, from l = 1 to lmax and m = 1 to l. (Where lmax = nx - 2, nx being the number of latitudinal pixels (set in src/modules/mod_params.f90), which is currently set at 512. To simulate MDI images, this can be changed to 1024.)
+spectrum (radial and poloidal) for all spherical harmonic degrees, l, and orders, m, from l = 1 to lmax and m = 1 to l. (Where lmax = nx - 2, nx being the number of latitudinal pixels (set in src/modules/mod_params.f90), which is currently set at 512. This lmax well includes the supergranule spectra profile centred at l~110, but not that for granulation, centered around l~4000. To simulate MDI images, nx can be changed to 1024.)
 
 On calculating the three spectra (radial, poloidal, toroidal), the program calculated the respective velocities across longitundial strips over a set of nx/2 hemispheric latitudes. This is performed by combining the calculated spectral amplitudes with the spherical harmonic functions at each latitude and performing an inverse fourier transform to produce the 3-component longitudinal velocity profiles. Symmetries of the spherical harmonics across the equator means that the southern-latitude longitudnal strips can be calculated at the same time as the northern-latitude counterparts.
 
@@ -101,4 +101,10 @@ The operation and output of this demonstration program has been described. Forth
 - using the horizontal vector velocities to advect an array of 'floating corks' to simulated the structure of the Sun's chromospheric network,
 - interpolate the maps to the observable disk view of the Sun, project the three velocity maps onto the line-of-sight and sum all three to produce sets simulated Doppler images of the Sun, similar to those observed by SOHO/MDI, and produced by Hathaway and his teams of researchers over the years.
 
+## References
+
+- [Hathaway D.H. (1988) Sol. Phys., 117(2), 329-341.](https://ui.adsabs.harvard.edu/abs/1988SoPh..117..329H/abstract)
+- [Hathaway D.H., Beck J.G., et al. (2000) Sol. Phys., 193(1/2), 299-312.](https://ui.adsabs.harvard.edu/abs/2000SoPh..193..299H/abstract)
+- [Hathaway D.H., Williams P.E., Dela Rosa K., Cuntz M. (2010) Ap.J., 725(1), 1082-1090.](https://ui.adsabs.harvard.edu/abs/2010ApJ...725.1082H/abstract)
+- [Williams P.E., Hathaway D.H., Cuntz M. (2007) Ap.J.Lett, 662(2), L135-L138.](https://ui.adsabs.harvard.edu/abs/2007ApJ...662L.135W/abstract)
 
