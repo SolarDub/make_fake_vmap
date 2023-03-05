@@ -25,7 +25,7 @@ To view the component maps, and to make horizontal velocity quiver maps, two Pyt
 
 ## Compiling and Linking with GFortran
 
-In lieu of a proper Makefile, a simple script, mkfile.sh, is currently used to compile and link the program. In the base make_fake_vmap directory, type:
+In lieu of a proper Makefile, a simple script, mkfile.sh, is currently used to compile and link the program. In the base make_fake_vmap directory, enter:
 
     $ ./mkfile.sh
 
@@ -33,7 +33,12 @@ It is then advisable to remove the object files:
 
     $ rm *.o
        
-An executable file, 
+An executable file, make_fake_vmap.exe is produced in the /bin directory
  
- ## 
+## Execution
 
+To execute the program, enter:
+
+    $ ./bin/make_fake_vmap.exe
+
+The execution proceeds by reading in convection spectral amplitudes (from /inputspec/fakespec.txt) and writing those pertaining to the first 20 spherical-hamonic degrees, l, in three columns: radial, poloidal, toroidal.
