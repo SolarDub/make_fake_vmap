@@ -26,6 +26,7 @@ SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
 
   COMPLEX(kind=SP), DIMENSION(nx,nx), INTENT(INOUT) :: r, s, t
 
+! Initialize radial, poloidal and toroidal spectral coefficients to zero.
   r = (0., 0.); s = (0., 0.); t = (0., 0.)
 
   ! Initialize rotation and meridional flow spectral profiles
@@ -39,6 +40,7 @@ SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
   !  Calculate the convection spectrum.                                  *
   !                                                                      *
   !***********************************************************************
+      write(*,*) 'Calculating convection spectrum.'
       DO l = 1,lmax
 
   	    l1 = l+1
@@ -69,7 +71,7 @@ SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
   	      END DO
   	    END DO
 
-  	  WRITE(*,*) 'Velocity spectrum calculated'
+  	  WRITE(*,*) 'Velocity spectra calculated'
 
 END SUBROUTINE read_conv_spec
 

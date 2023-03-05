@@ -32,7 +32,6 @@ PROGRAM make_fake_build_f90
 
 ! Read convection spectral coefficients
   CALL read_conv_spec_file(amp)
-  WRITE(*,*) amp(2,1)
 
   DO ihour = 1, 1
 

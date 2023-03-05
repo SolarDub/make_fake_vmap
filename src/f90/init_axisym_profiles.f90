@@ -14,7 +14,7 @@ SUBROUTINE init_axisym_profiles(s, t)
 !                                                                      *
 !***********************************************************************
 
-  write(*,*) 'calculating spectrum'
+  write(*,*) 'Calculating spectrum for axisymmetric flows.'
   m = 0
 
 !***********************************************************************
