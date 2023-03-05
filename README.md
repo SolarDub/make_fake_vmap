@@ -48,7 +48,17 @@ spectrum (radial and poloidal) for all spherical harmonic degrees, l, and orders
 
 On calculating the three spectra (radial, poloidal, toroidal), the program calculated the respective velocities across longitundial strips over a set of nx/2 hemispheric latitudes. This is performed by combining the calculated spectral amplitudes with the spherical harmonic functions at each latitude and performing an inverse fourier transform to produce the 3-component longitudinal velocity profiles. Symmetries of the spherical harmonics across the equator means that the southern-latitude longitudnal strips can be calculated at the same time as the northern-latitude counterparts.
 
-The northern and southern hemisphere profiles are then compiled into a single map for each component and these maps are written to file with u, v and w prefixes relatind to toroidal, polidal and radial velocities, resepectively.
+The northern and southern hemisphere profiles are then compiled into a single map for each component and these maps are written to file with u, v and w prefixes relating to toroidal, polidal and radial velocities, resepectively.
+
+Pre-made map files have been provided in the /output directory and are named as follows:
+- u, v and w relate to toroidal, polidal and radial velocity maps, respectively,
+- number prefix 1 relates to maps that include all physical velocity components (i.e. axisymmetric flows + supergranulation),
+- number prefix 5 relates to maps that include axisymmetric flows only,
+- number prefix 9 relates to maps that include supergranule flows only.
+
+These files may be viewed using the provided Python programs:
+- plot_map.py plots velocity maps for all three components
+- plot_hv_map.py plots velocity maps for the horizontal components (toroidal and poloidal) plus a horizontal velocity quiver map of the central 64-by-64 square-pixel region.
 
 ## Velocity Maps
 
@@ -79,4 +89,10 @@ Notes:
 
 
 ## Cellular Supergranulation Velocity Profiles
+
+While the axisymmetric flows can be clearly seen on the global maps, the supergranulation signals are much smaller. They are best observed by selecting a central region of the map, in this case a 64-by-64 pixel square. The toroidal and poloidal maps are then combined into a single horizontal vector velocity quiver map, as shown below. The supergranulation flows can be seen as cellular structures situated across the region.
+
+<img src="https://user-images.githubusercontent.com/81772405/222983524-a8195b8c-406b-4cdd-a8f9-ec5112cd60f3.jpg" width="600" />
+
+
 
