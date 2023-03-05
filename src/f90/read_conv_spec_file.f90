@@ -15,7 +15,7 @@ SUBROUTINE read_conv_spec_file(amp)
   !  1: radial, 2; poloidal, 3: toroidal                                 *
   !                                                                      *
   !***********************************************************************
-      OPEN(unit=7,file='fakespec.txt',status='old')
+      OPEN(unit=7,file='./inputspec/fakespec.txt',status='old')
 
         DO l = 1,lmax
 
