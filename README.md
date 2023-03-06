@@ -61,7 +61,7 @@ These files may be viewed using the provided Python programs:
 - plot_map.py plots velocity maps for all three components
 - plot_hv_map.py plots velocity maps for the horizontal components (toroidal and poloidal) plus a horizontal velocity quiver map of the central 64-by-64 square-pixel region.
 
-To execute these respective programs, enter:
+To execute either program, enter:
 
     $ python3 plot_map.py
 
