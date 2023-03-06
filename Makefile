@@ -1,7 +1,7 @@
 BINARY=bin/make_fake_vmap.exe # Binary executable plus relative path
 CODEDIRS=src/f90/modules src/f90 src .  # Code directories - can be a list
 MODDIR=mod
-MDPREF=src/f90/modules/nr
+MDPREF=src/f90/modules/
 EXT=f90
 
 FC=gfortran
@@ -31,10 +31,10 @@ $(BINARY): $(OBJECTS)
 	$(FC) $(MODOPT) $(FFLAGS) -c -o $@ $<
 
 # Both nr and nrutil modules depend on nrtype module
-$(MDPREF).o:$(MDPREF)type.o
-	$(FC) $(MODOPT) $(FFLAGS) -c -o $(MDPREF).o $(MDPREF).f90
-$(MDPREF)util.o:$(MDPREF)type.o
-	$(FC) $(MODOPT) $(FFLAGS) -c -o $(MDPREF)util.o $(MDPREF)util.f90
+$(MDPREF)nr.o:$(MDPREF)nrtype.o
+	$(FC) $(MODOPT) $(FFLAGS) -c -o $(MDPREF)nr.o $(MDPREF)nr.f90
+$(MDPREF)nrutil.o:$(MDPREF)nrtype.o
+	$(FC) $(MODOPT) $(FFLAGS) -c -o $(MDPREF)nrutil.o $(MDPREF)nrutil.f90
 
 clean:
 	rm -rf $(OBJECTS)
