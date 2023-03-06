@@ -61,6 +61,14 @@ These files may be viewed using the provided Python programs:
 - plot_map.py plots velocity maps for all three components
 - plot_hv_map.py plots velocity maps for the horizontal components (toroidal and poloidal) plus a horizontal velocity quiver map of the central 64-by-64 square-pixel region.
 
+To execute these respective programs, enter:
+
+    $ python3 plot_map.py
+
+or
+
+    $ python3 plot_hv_map.py
+
 ## Velocity Maps
 
 Below are plotted the velocity maps for the three components: toroidal, polidal and radial. Note that the maps represent only the longitudinal domain that would be visible to an observer (i.e. the visible face of the Sun), culminating in a map with nx-by-nx dimensions (with nx currently set to 512). For each plot, below the map 
