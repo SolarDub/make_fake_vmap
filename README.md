@@ -25,13 +25,13 @@ To view the component maps, and to make horizontal velocity quiver maps, two Pyt
 
 ## Compiling and Linking with GFortran
 
-In lieu of a proper Makefile, a simple script, mkfile.sh, is currently used to compile and link the program. In the base make_fake_vmap directory, enter:
+Use the Makefile to compile and link the program and produce an executable. In the base make_fake_vmap directory, enter:
 
-    $ ./mkfile.sh
+    $ make
 
 It is then advisable to remove the object files:
 
-    $ rm *.o
+    $ make clean
        
 An executable file, make_fake_vmap.exe is produced in the /bin directory
  
