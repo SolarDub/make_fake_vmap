@@ -8,9 +8,9 @@ and axisymmetric (rotation and meridional circulation) flows manifesting at the 
 The solar rotation is directed toroidally (i.e. longitudinally) with a latitudinal variation profile. 
 The meridional circulation is directed poloidally (i.e. latitudinally), also with a latitudinal variation profile.
 
-The supergranulation flows have a weak radial flow (upward perpendiclar to surface) and strong divergent flow (horizontal to surface).
+The supergranulation flows have a weak radial flow (upward, perpendiclar to surface) and strong divergent flow (tangential to surface).
 
-Each flow is described by spherical-harmonic spectral coefficients which are used as spectral amplitudes for orthongonal sets of spherical-harmonic functions.
+Each flow is described by spherical-harmonic spectral coefficients, which are used as spectral amplitudes for orthogonal sets of spherical-harmonic functions.
 
 This program is a FORTRAN90 adaptation of early FORTRAN77 data-simulations written by David Hathaway, as described in his 1988 Solar Physics paper 
 ([Hathwaway (1988)](https://ui.adsabs.harvard.edu/abs/1988SoPh..117..329H/abstract)), which culminated in the production of simulated solar Doppler image data as
