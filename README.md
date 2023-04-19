@@ -1,6 +1,6 @@
 # make_fake_vmap
 
-This repository is currently for demonstration purposes only.
+This repository is currently for demonstration purposes only and the code is still under development.
 
 This program develops 3-component (toroidal, poloidal, radial) velocity maps of convection-like (supergranulation) 
 and axisymmetric (rotation and meridional circulation) flows manifesting at the solar surface.
