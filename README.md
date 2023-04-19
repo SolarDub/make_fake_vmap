@@ -33,7 +33,7 @@ It is then advisable to remove the object files:
 
     $ make clean
        
-An executable file, make_fake_vmap.exe is produced in the /bin directory
+An executable file, make_fake_vmap.exe, is produced in the /bin directory
  
 ## Execution
 
