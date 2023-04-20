@@ -40,6 +40,7 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 	CALL plmcoef(coef)
 	WRITE(*,*) 'Legendre recurrance coefficients calculated.'
 
+! Loop over hemispheric pixel latitudes (N & S are both covered within loop)
   DO j = 1,nxhalf
 
     ! Northern and southern pixel coordinates
@@ -60,9 +61,10 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 !                                                                      *
 !  For m > 1:                                                          *
 !  Split non-axisymmetric signal into equal positive and               *
-!  negative frequencies.                                                *
+!  negative frequencies.                                               *
 !                                                                      *
 !***********************************************************************
+! Loop over spherical harmonic order, m
     DO m = 0,lmax-1
 
       m1 = m+1
@@ -72,16 +74,18 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 ! Produce assoc. Legendre polynomials for current latitude
       CALL plm(m,x,coef,p)
 
-      sum1 = (0.,0.)
-      sum2 = (0.,0.)
-      sum3 = (0.,0.)
-      sum4 = (0.,0.)
-      sum5 = (0.,0.)
-      sum6 = (0.,0.)
+! Reset complex velocity spectral amplitude arrays
+      sum1 = (0.,0.)  ! Toroidal, North
+      sum2 = (0.,0.)  ! Toroidal, South
+      sum3 = (0.,0.)  ! Poloidal, North
+      sum4 = (0.,0.)  ! Poloidal, South
+      sum5 = (0.,0.)  ! Radial, North
+      sum6 = (0.,0.)  ! Radial, South
 
       fac  = CEILING(em/(em+1))    ! m = 0, fac = 0; fac = 1 otherwise
       hfac = 1. - 0.5*fac          ! m = 0, hfac = 1.0; hfac = 0.5 otherwise
 
+! Loop over spherical harmonic order, l
       DO l = m,lmax-1
 
         l1   = l+1
@@ -90,15 +94,19 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
         v1   = l*p(l2)/coef(l2,m1) - (l+1.)*p(l)/coef(l1,m1)
         v2   = -m*p(l1)*fac
 
+! Sum toroidal, poloidal, radial velocity amplitudes
         sum1 = sum1 - t(l1,m1)*v1 + xi*s(l1,m1)*v2
         sum2 = sum2 + ieo * (t(l1,m1)*v1 + xi*s(l1,m1)*v2)
-        sum3 = sum3 + s(l1,m1)*v1 !+ xi*t(l1,m1)*v2
+        sum3 = sum3 + s(l1,m1)*v1 + xi*t(l1,m1)*v2
         sum4 = sum4 - ieo * (s(l1,m1)*v1 - xi*t(l1,m1)*v2)
         sum5 = sum5 + r(l1,m1)*p(l1)
         sum6 = sum6 + ieo * r(l1,m1)*p(l1)
 
       END DO
 
+! Combine with numerical factors and 1/sin(lat) where necessary
+! With the above sums, these commands represent H88 eqns 9-11:
+! - velocity components at pixel latitude theta_j for harmonic order, m.
       unorth(m1) = hfac*sum1*rst
       usouth(m1) = hfac*sum2*rst
       vnorth(m1) = hfac*sum3*rst
