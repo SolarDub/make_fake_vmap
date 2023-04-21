@@ -1,6 +1,6 @@
 # make_fake_vmap
 
-This repository is currently for demonstration purposes only.
+This repository is currently for demonstration purposes only and the code is still under development.
 
 This program develops 3-component (toroidal, poloidal, radial) velocity maps of convection-like (supergranulation) 
 and axisymmetric (rotation and meridional circulation) flows manifesting at the solar surface.
@@ -8,9 +8,9 @@ and axisymmetric (rotation and meridional circulation) flows manifesting at the 
 The solar rotation is directed toroidally (i.e. longitudinally) with a latitudinal variation profile. 
 The meridional circulation is directed poloidally (i.e. latitudinally), also with a latitudinal variation profile.
 
-The supergranulation flows have a weak radial flow (upward perpendiclar to surface) and strong divergent flow (horizontal to surface).
+The supergranulation flows have a weak radial flow (upward, perpendicular to surface) and strong divergent flow (tangential to surface).
 
-Each flow is described by spherical-harmonic spectral coefficients which are used as spectral amplitudes for orthongonal sets of spherical-harmonic functions.
+Each flow is described by spherical-harmonic spectral coefficients, which are used as spectral amplitudes for orthogonal sets of spherical-harmonic functions.
 
 This program is a FORTRAN90 adaptation of early FORTRAN77 data-simulations written by David Hathaway, as described in his 1988 Solar Physics paper 
 ([Hathwaway (1988)](https://ui.adsabs.harvard.edu/abs/1988SoPh..117..329H/abstract)), which culminated in the production of simulated solar Doppler image data as
@@ -33,7 +33,7 @@ It is then advisable to remove the object files:
 
     $ make clean
        
-An executable file, make_fake_vmap.exe is produced in the /bin directory
+An executable file, make_fake_vmap.exe, is produced in the /bin directory
  
 ## Execution
 
@@ -44,7 +44,7 @@ To execute the program, enter:
 The execution proceeds by reading in convection spectral amplitudes (from /inputspec/fakespec.txt) and writing those pertaining to the first 20 spherical-hamonic degrees, l, in three columns: radial, poloidal, toroidal.
 
 The global (spherical harmonic order, m = 0) toroidal rotation and poloidal meridional circulation spectra are calculated, followed by a calculation of the convection
-spectrum (radial and poloidal) for all spherical harmonic degrees, l, and orders, m, from l = 1 to lmax and m = 1 to l. (Where lmax = nx - 2, nx being the number of latitudinal pixels (set in src/modules/mod_params.f90), which is currently set at 512. This lmax well includes the supergranule spectra profile centred at l~110, but not that for granulation, centered around l~4000. To simulate MDI images, nx can be changed to 1024.)
+spectrum (radial and poloidal) for all spherical harmonic degrees, l, and orders, m, from l = 1 to lmax and m = 1 to l. (Where lmax = nx - 2, nx being the number of latitudinal pixels (set in src/modules/mod_params.f90), which is currently set at 512. This lmax well includes the supergranule spectra profile centred at l = 110, but not that for granulation, centered around l = 4000. To simulate MDI images, nx can be changed to 1024.)
 
 On calculating the three spectra (radial, poloidal, toroidal), the program calculated the respective velocities across longitundial strips over a set of nx/2 hemispheric latitudes. This is performed by combining the calculated spectral amplitudes with the spherical harmonic functions at each latitude and performing an inverse fourier transform to produce the 3-component longitudinal velocity profiles. Symmetries of the spherical harmonics across the equator means that the southern-latitude longitudnal strips can be calculated at the same time as the northern-latitude counterparts.
 
@@ -60,6 +60,14 @@ Pre-made map files have been provided in the /output directory and are named as 
 These files may be viewed using the provided Python programs:
 - plot_map.py plots velocity maps for all three components
 - plot_hv_map.py plots velocity maps for the horizontal components (toroidal and poloidal) plus a horizontal velocity quiver map of the central 64-by-64 square-pixel region.
+
+To execute either program, enter:
+
+    $ python3 plot_map.py
+
+or
+
+    $ python3 plot_hv_map.py
 
 ## Velocity Maps
 
