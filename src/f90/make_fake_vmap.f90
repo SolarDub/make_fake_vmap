@@ -6,7 +6,7 @@ PROGRAM make_fake_build_f90
   IMPLICIT NONE
 
   INTEGER :: ihour, ifile, idum
-  INTEGER :: l, l1, m, m1, m2, i, j
+  INTEGER :: l, l1, m, m1, m2, i, j, nxby2
 
   REAL(kind=SP) :: hours
   REAL(kind=SP) :: el, em
@@ -49,11 +49,14 @@ PROGRAM make_fake_build_f90
     CALL write_output_file(ifile, 'vvel_1', v, 2*nx+4, nx+4)  ! pol
     CALL write_output_file(ifile, 'wvel_1', w, 2*nx+4, nx+4)  ! rad
 
-    WRITE(*,*) ''
-    WRITE(*,*) 'At x = ', nx/2, ' y = ', nx/2
-    WRITE(*,*) 'Toroidal velocity component, u = ', u(nx/2,nx/2)
-    WRITE(*,*) 'Poloidal velocity component, v = ', v(nx/2,nx/2)
-    WRITE(*,*) 'Radial velocity component, w = ', w(nx/2,nx/2)
+    nxby2 = nx/2
+    CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
+
+!    WRITE(*,*) ''
+!    WRITE(*,*) 'At x = ', nx/2, ' y = ', nx/2
+!    WRITE(*,*) 'Toroidal velocity component, u = ', u(nx/2,nx/2)
+!    WRITE(*,*) 'Poloidal velocity component, v = ', v(nx/2,nx/2)
+!    WRITE(*,*) 'Radial velocity component, w = ', w(nx/2,nx/2)
 
 
   END DO
