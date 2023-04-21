@@ -50,13 +50,8 @@ PROGRAM make_fake_build_f90
     CALL write_output_file(ifile, 'wvel_1', w, 2*nx+4, nx+4)  ! rad
 
     nxby2 = nx/2
-    CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
 
-!    WRITE(*,*) ''
-!    WRITE(*,*) 'At x = ', nx/2, ' y = ', nx/2
-!    WRITE(*,*) 'Toroidal velocity component, u = ', u(nx/2,nx/2)
-!    WRITE(*,*) 'Poloidal velocity component, v = ', v(nx/2,nx/2)
-!    WRITE(*,*) 'Radial velocity component, w = ', w(nx/2,nx/2)
+    CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
 
 
   END DO
