@@ -1,0 +1,20 @@
+# Compiler outputs #
+*.a
+*.bat
+*.exe
+
+# Directories #
+#API_Parser_Output
+#Obj
+
+# Packages #
+#*.gz
+#*.iso
+#*.jar
+
+# System #
+.DS_Store
+
+# Reference text / diagrams
+*.ppt
+*.pptx
