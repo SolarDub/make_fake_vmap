@@ -51,8 +51,6 @@ PROGRAM make_fake_build_f90
 
     nxby2 = nx/2
     CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
-<<<<<<< HEAD
-=======
 
 !    WRITE(*,*) ''
 !    WRITE(*,*) 'At x = ', nx/2, ' y = ', nx/2
@@ -60,7 +58,6 @@ PROGRAM make_fake_build_f90
 !    WRITE(*,*) 'Poloidal velocity component, v = ', v(nx/2,nx/2)
 !    WRITE(*,*) 'Radial velocity component, w = ', w(nx/2,nx/2)
 
->>>>>>> 9e7580a5308ec89a278abcb7b5c6c17d1b41011e
 
   END DO
 
