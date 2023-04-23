@@ -1,25 +1,15 @@
 SUBROUTINE write_output_file(ifile, fpref, A, M, N)
 
   USE mod_main, ONLY : SP
-  USE mod_params, ONLY : nx
 
   IMPLICIT NONE
 
   INTEGER :: ifile, M, N, i, j
-  REAL(kind=SP), DIMENSION(M,N) :: A
+  REAL(kind=SP), DIMENSION(M,N), INTENT(IN) :: A      ! Velocity map array
 
   CHARACTER (LEN=6), INTENT(IN)  :: fpref        ! Output file name prefix
-  CHARACTER (LEN=23) :: filename                 ! Output file name
 
-  filename = create_filename(ifile, fpref)
-
-  write(*,*) 'Writing file: ', filename
-
-  open(unit=1,file=filename,access='direct', status='unknown',recl=(4*nx))
-  do j=1,nx
-    write(1,rec=j) (A(i,j),i=1,nx)
-  enddo
-  close(1)
+  call write_to_file(create_filename(ifile, fpref), A)
 
   CONTAINS
 
@@ -45,5 +35,24 @@ SUBROUTINE write_output_file(ifile, fpref, A, M, N)
               // oext
 
     END FUNCTION create_filename
+
+    SUBROUTINE write_to_file(filename, A)
+
+      USE mod_params, ONLY : nx
+
+      IMPLICIT NONE
+
+      REAL(kind=SP), DIMENSION(M,N), INTENT(IN) :: A     ! Velocity map array
+      CHARACTER (LEN=23), INTENT(IN) :: filename         ! Output file name
+
+      write(*,*) 'Writing file: ', filename
+
+      open(unit=1,file=filename,access='direct', status='unknown',recl=(4*nx))
+      do j=1,nx
+        write(1,rec=j) (A(i,j),i=1,nx)
+      enddo
+      close(1)
+
+    END SUBROUTINE write_to_file
 
 END SUBROUTINE write_output_file
