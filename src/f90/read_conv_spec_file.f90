@@ -15,17 +15,17 @@ SUBROUTINE read_conv_spec_file(amp)
   !  1: radial, 2; poloidal, 3: toroidal                                 *
   !                                                                      *
   !***********************************************************************
-      OPEN(unit=7,file='./inputspec/fakespec.txt',status='old')
+  OPEN(unit=7,file='./inputspec/fakespec.txt',status='old')
 
-        DO l = 1,lmax
+    DO l = 1,lmax
 
-    	    READ(7,*) amp(l,1), amp(l,2), amp(l,3)
-    	    IF (l .lt. 20) WRITE(*,*) amp(l,1), amp(l,2), amp(l,3)
+    	READ(7,*) amp(l,1), amp(l,2), amp(l,3)
+    	IF (l .lt. 20) WRITE(*,*) amp(l,1), amp(l,2), amp(l,3)
 
-  	    END DO
+    END DO
 
-  	  CLOSE(7)
+  CLOSE(7)
 
-  	  WRITE(*,*) 'Velocity spectrum read from file'
+  WRITE(*,*) 'Velocity spectrum read from file'
 
 END SUBROUTINE read_conv_spec_file
