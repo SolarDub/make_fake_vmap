@@ -5,7 +5,7 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 
   IMPLICIT NONE
 
-  INTEGER :: i, j, jn, js, isum
+  INTEGER :: i, j, jn, js, ivc
   INTEGER :: l, l1, l2, m, m1, m2
   INTEGER :: fac, ieo
   REAL(kind=SP) :: theta, x, sintheta, rst, rstterm, em, hfac, v1, v2
@@ -97,16 +97,16 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 ! With the above sums, these commands represent H88 eqns 9-11:
 ! - velocity components at pixel latitude theta_j for harmonic order, m.
 
-      DO isum = 1, 6
+      DO ivc = 1, 6
 
-        IF (isum > 4) THEN
+        IF (ivc > 4) THEN
           rstterm = 1
         ELSE
           rstterm = rst
         END IF
 
-        vc(isum,m1) = hfac*sum(isum)*rstterm
-        IF (m > 0) vc(isum,m2) = hfac*CONJG(sum(isum))*rstterm
+        vc(ivc,m1) = hfac*sum(ivc)*rstterm
+        IF (m > 0) vc(ivc,m2) = hfac*CONJG(sum(ivc))*rstterm
 
       END DO
 
@@ -119,13 +119,13 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 !***********************************************************************
 
 ! Initialize all N and S hemisphere complex velocity components to zero
-    DO isum = 1, 6
-      vc(isum,lmax+1:nphi-lmax+1) = 0.
+    DO ivc = 1, 6
+      vc(ivc,lmax+1:nphi-lmax+1) = 0.
     END DO
 
 ! Take FFT along latitudinal strip to determine complex velocities
-    DO isum = 1, 6
-      call four1_sp(vc(isum,:),nphi,-1)
+    DO ivc = 1, 6
+      call four1_sp(vc(ivc,:),nphi,-1)
     END DO
 
 ! Calculate velocity profile along latitudinal strip
