@@ -1,4 +1,4 @@
-SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
+SUBROUTINE read_conv_spec(ihour, amp, r, s, t)
 
   USE mod_main, ONLY : SP
   USE mod_params, ONLY : lmax, nx
@@ -6,16 +6,16 @@ SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
   IMPLICIT NONE
 
   INTERFACE
-    SUBROUTINE getArg(ihour, idum, m, factor2, factor4, arg)
+    SUBROUTINE getArg(ihour, m, factor2, factor4, arg)
       USE mod_main, ONLY : SP
-      INTEGER, INTENT(IN) :: ihour, idum, m
+      INTEGER, INTENT(IN) :: ihour, m
       REAL(kind=SP), INTENT(IN) :: factor2, factor4
       REAL(kind=SP) :: hours, phase
       COMPLEX(kind=SP), INTENT(OUT)    :: arg
     END SUBROUTINE getArg
   END INTERFACE
 
-  INTEGER, INTENT(IN) :: ihour, idum
+  INTEGER, INTENT(IN) :: ihour
   INTEGER :: l, l1, m, m1, idummy, dd
 
   REAL(kind=SP), DIMENSION(lmax,3), INTENT(IN) :: amp
@@ -56,7 +56,7 @@ SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
   !
   ! Add phase information for rotation (r & s use same arg value)
   !
-          CALL getArg(ihour, idum, m, factor2, factor4, arg)
+          CALL getArg(ihour, m, factor2, factor4, arg)
 
   	      r(l1,m1) = -1.*amp(l,1)*arg
   		    s(l1,m1) = amp(l,2)*arg
@@ -64,7 +64,7 @@ SUBROUTINE read_conv_spec(ihour, idum, amp, r, s, t)
   !
   ! Use random phases for toroidal component (t uses different arg value)
   !
-          CALL getArg(ihour, idum, m, factor2, factor4, arg)
+          CALL getArg(ihour, m, factor2, factor4, arg)
 
   		    t(l1,m1) = amp(l,3)*arg
 
@@ -81,14 +81,14 @@ END SUBROUTINE read_conv_spec
 !                                                      *
 !*******************************************************
 
-SUBROUTINE getArg(ihour, idum, m, factor2, factor4, arg)
+SUBROUTINE getArg(ihour, m, factor2, factor4, arg)
 
   USE mod_main, ONLY : SP
   USE mod_params, ONLY : pi, xi, omega0, omega2, omega4
 
   IMPLICIT NONE
 
-  INTEGER, INTENT(IN) :: ihour, idum, m
+  INTEGER, INTENT(IN) :: ihour, m
   REAL(kind=SP), INTENT(IN) :: factor2, factor4
   REAL(kind=SP) :: hours, phase
   COMPLEX(kind=SP), INTENT(OUT)    :: arg

@@ -1,29 +1,31 @@
-SUBROUTINE write_output_file(ifile, fpref, A, M, N)
+SUBROUTINE write_output_file(ihour, fpref, A, M, N)
 
   USE mod_main, ONLY : SP
 
   IMPLICIT NONE
 
-  INTEGER :: ifile, M, N, i, j
+  INTEGER :: ihour, M, N, i, j
   REAL(kind=SP), DIMENSION(M,N), INTENT(IN) :: A      ! Velocity map array
 
   CHARACTER (LEN=6), INTENT(IN)  :: fpref        ! Output file name prefix
 
-  call write_to_file(create_filename(ifile, fpref), A)
+  CALL write_to_file(create_filename(ihour, fpref), A)
 
   CONTAINS
 
-    FUNCTION create_filename(ifile, fpref) RESULT(filename)
+    FUNCTION create_filename(ihour, fpref) RESULT(filename)
 
       USE mod_params, ONLY : opath, oext
 
       IMPLICIT NONE
 
-      INTEGER, INTENT(IN) :: ifile
-      INTEGER :: n1000, n100, n10, n1
+      INTEGER, INTENT(IN) :: ihour
+      INTEGER :: ifile, n1000, n100, n10, n1
 
       CHARACTER (LEN=6),  INTENT(IN)   :: fpref     ! Output file name prefix
       CHARACTER (LEN=23) :: filename                ! Output file name
+
+      ifile = 1000 + (ihour-1)*4
 
       n1000 = int(ifile/1000)
       n100  = int((ifile-1000*n1000)/100)

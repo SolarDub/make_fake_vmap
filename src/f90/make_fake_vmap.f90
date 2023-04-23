@@ -5,11 +5,9 @@ PROGRAM make_fake_build_f90
 
   IMPLICIT NONE
 
-  INTEGER :: ihour, ifile, idum
-  INTEGER :: l, l1, m, m1, m2, i, j, nxby2
+  INTEGER :: ihour, l, l1, m, m1, m2, i, j, nxby2
 
-  REAL(kind=SP) :: hours
-  REAL(kind=SP) :: el, em
+  REAL(kind=SP) :: hours, el, em
 
 ! Convection spectrum amplitudes (Radial, Poloidal, Toroidal)
   REAL(kind=SP), DIMENSION(lmax,3) :: amp
@@ -36,18 +34,18 @@ PROGRAM make_fake_build_f90
   DO ihour = 1, 1
 
 !  Prepare terms for new iteration
-    CALL init_next_loop(ihour, ifile, idum)
+!    CALL init_next_loop(ihour, ifile)
 
 !  Determine spherical harmonic coefficients
-    CALL read_conv_spec(ihour, idum, amp, r, s, t)
+    CALL read_conv_spec(ihour, amp, r, s, t)
 
 ! Calculate velocity components from spectral coefficients
     CALL calc_velocity_components(r, s, t, u, v, w)
 
 ! Write velocity components to file
-    CALL write_output_file(ifile, 'uvel_1', u, 2*nx+4, nx+4)  ! tor
-    CALL write_output_file(ifile, 'vvel_1', v, 2*nx+4, nx+4)  ! pol
-    CALL write_output_file(ifile, 'wvel_1', w, 2*nx+4, nx+4)  ! rad
+    CALL write_output_file(ihour, 'uvel_1', u, 2*nx+4, nx+4)  ! tor
+    CALL write_output_file(ihour, 'vvel_1', v, 2*nx+4, nx+4)  ! pol
+    CALL write_output_file(ihour, 'wvel_1', w, 2*nx+4, nx+4)  ! rad
 
     nxby2 = nx/2
     CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
