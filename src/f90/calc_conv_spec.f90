@@ -16,10 +16,10 @@ SUBROUTINE calc_conv_spec(ihour, amp, r, s, t)
   END INTERFACE
 
   INTEGER, INTENT(IN) :: ihour
-  INTEGER :: l, l1, m, m1, idummy, dd
+  INTEGER :: l, l1, m, m1, idummy
 
   REAL(kind=SP), DIMENSION(lmax,3), INTENT(IN) :: amp
-  REAL(kind=SP) :: hours, el, em, factor2, factor4, phase, rnd
+  REAL(kind=SP) :: hours, el, em, factor2, factor4, phase
 
 ! Exponential part of polar complex number
   COMPLEX(kind=SP) :: arg
