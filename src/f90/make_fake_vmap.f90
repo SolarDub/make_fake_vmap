@@ -13,12 +13,9 @@ PROGRAM make_fake_build_f90
 ! Spherical harmonic coefficients: Radial, r; Poloidal, s; Toroidal,t
   COMPLEX(kind=SP), DIMENSION(nx,nx) :: r, s, t
 
-! Velocity vector component maps
+! Velocity vector component maps (initialized to zero)
 ! Increase dimension by 4 to produce wrap-around border for interpolation
-  REAL(kind=SP), DIMENSION(nphi+4,nx+4) :: u, v, w
-
-! Initialize velocity vector components to zero
-  u = 0.; v = 0.; w = 0.
+  REAL(kind=SP), DIMENSION(nphi+4,nx+4) :: u = 0., v = 0., w = 0.
 
 ! Read convection spectral coefficients
   CALL read_conv_spec_file(amp)
