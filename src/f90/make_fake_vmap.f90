@@ -26,7 +26,7 @@ PROGRAM make_fake_build_f90
   DO ihour = 1, 1
 
 !  Determine spherical harmonic coefficients
-    CALL read_conv_spec(ihour, amp, r, s, t)
+    CALL calc_conv_spec(ihour, amp, r, s, t)
 
 ! Calculate velocity components from spectral coefficients
     CALL calc_velocity_components(r, s, t, u, v, w)
@@ -36,6 +36,7 @@ PROGRAM make_fake_build_f90
     CALL write_output_file(ihour, 'vvel_1', v, 2*nx+4, nx+4)  ! pol
     CALL write_output_file(ihour, 'wvel_1', w, 2*nx+4, nx+4)  ! rad
 
+! Write velocity components at map-center to screen
     CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
 
   END DO

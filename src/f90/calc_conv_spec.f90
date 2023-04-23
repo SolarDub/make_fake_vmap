@@ -1,4 +1,4 @@
-SUBROUTINE read_conv_spec(ihour, amp, r, s, t)
+SUBROUTINE calc_conv_spec(ihour, amp, r, s, t)
 
   USE mod_main, ONLY : SP
   USE mod_params, ONLY : lmax, nx
@@ -73,7 +73,7 @@ SUBROUTINE read_conv_spec(ihour, amp, r, s, t)
 
   	  WRITE(*,*) 'Velocity spectra calculated'
 
-END SUBROUTINE read_conv_spec
+END SUBROUTINE calc_conv_spec
 
 !*******************************************************
 !                                                      *
