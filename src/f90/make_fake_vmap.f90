@@ -5,9 +5,7 @@ PROGRAM make_fake_build_f90
 
   IMPLICIT NONE
 
-  INTEGER :: ihour, l, l1, m, m1, m2, i, j, nxby2
-
-  REAL(kind=SP) :: hours, el, em
+  INTEGER :: ihour, nxby2 = nx/2
 
 ! Convection spectrum amplitudes (Radial, Poloidal, Toroidal)
   REAL(kind=SP), DIMENSION(lmax,3) :: amp
@@ -15,15 +13,9 @@ PROGRAM make_fake_build_f90
 ! Spherical harmonic coefficients: Radial, r; Poloidal, s; Toroidal,t
   COMPLEX(kind=SP), DIMENSION(nx,nx) :: r, s, t
 
-! Spherical Harmonic coefficients: coef; Associated Legendre Polynomials, p
-  REAL(kind=SP)       :: coef(nx,nx), p(nx)
-
 ! Velocity vector component maps
 ! Increase dimension by 4 to produce wrap-around border for interpolation
   REAL(kind=SP), DIMENSION(nphi+4,nx+4) :: u, v, w
-
-! Output file path/name parameters
-  CHARACTER (LEN=6)   :: fpref              ! Output file name prefix
 
 ! Initialize velocity vector components to zero
   u = 0.; v = 0.; w = 0.
@@ -44,7 +36,6 @@ PROGRAM make_fake_build_f90
     CALL write_output_file(ihour, 'vvel_1', v, 2*nx+4, nx+4)  ! pol
     CALL write_output_file(ihour, 'wvel_1', w, 2*nx+4, nx+4)  ! rad
 
-    nxby2 = nx/2
     CALL write_results(u(nxby2,nxby2), v(nxby2,nxby2), w(nxby2,nxby2), nxby2)
 
   END DO
