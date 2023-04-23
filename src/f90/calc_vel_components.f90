@@ -5,9 +5,10 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
 
   IMPLICIT NONE
 
-  INTEGER :: i, j, jn, js, ivc
+  INTEGER :: i, j, ivc, ijh
   INTEGER :: l, l1, l2, m, m1, m2
   INTEGER :: fac, ieo
+  INTEGER, DIMENSION(2) :: jh ! North(1) / South(2) latitude pixel coords
   REAL(kind=SP) :: theta, x, sintheta, rst, rstterm, em, hfac, v1, v2
 
 ! Spherical Harmonic coefficients: coef; Associated Legendre Polynomials, p
@@ -38,8 +39,8 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
   DO j = 1,nxhalf
 
     ! Northern and southern pixel coordinates
-    jn       = nxhalf+j
-    js       = nxhalf+1-j
+    jh(1)       = nxhalf+j
+    jh(2)       = nxhalf+1-j
 
     theta    = 0.5*pi - (j-0.5)*dtheta
     x        = COS(theta)
@@ -128,14 +129,15 @@ SUBROUTINE calc_velocity_components(r, s, t, u, v, w)
       call four1_sp(vc(ivc,:),nphi,-1)
     END DO
 
-! Calculate velocity profile along latitudinal strip
+! Calculate velocity profiles along N,S latitudinal strips (1,2 = N,S)
 ! Take real part of complex velocities
-    u(1:nphi,jn) = REAL(vc(1, 1:nphi))
-    u(1:nphi,js) = REAL(vc(2, 1:nphi))
-    v(1:nphi,jn) = REAL(vc(3, 1:nphi))
-    v(1:nphi,js) = REAL(vc(4, 1:nphi))
-    w(1:nphi,jn) = REAL(vc(5, 1:nphi))
-    w(1:nphi,js) = REAL(vc(6, 1:nphi))
+    DO ijh = 1, 2
+
+      u(1:nphi,jh(ijh)) = REAL(vc(ijh, 1:nphi))     ! toroidal: u(n,s)=vc(1,2)
+      v(1:nphi,jh(ijh)) = REAL(vc(ijh+2, 1:nphi))   ! poloidal: v(n,s)=vc(3,4)
+      w(1:nphi,jh(ijh)) = REAL(vc(ijh+4, 1:nphi))   ! radial:   w(n,s)=vc(5,6) 
+
+    END DO
 
   END DO
 
