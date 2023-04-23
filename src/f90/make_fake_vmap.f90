@@ -33,9 +33,6 @@ PROGRAM make_fake_build_f90
 
   DO ihour = 1, 1
 
-!  Prepare terms for new iteration
-!    CALL init_next_loop(ihour, ifile)
-
 !  Determine spherical harmonic coefficients
     CALL read_conv_spec(ihour, amp, r, s, t)
 
