@@ -33,7 +33,7 @@ def printImageValues(image, nx):
 	
 	nxhalf = int(nx/2)
 	print('Test values:')
-	print(image[nxhalf-2:nxhalf+2,nxhalf-2:nxhalf+2])
+	print(image[nxhalf-2:nxhalf+1,nxhalf-2:nxhalf+1])
 	print(image[nxhalf-1,nxhalf-1])
 	print(image[nx-1,0],image[nx-1,nx-1])
 	print(image[0,0],image[0,nx-1])
@@ -87,26 +87,22 @@ def plotImageXsecs(image, nx, component):
 	ax_crossy.plot(image[:,nxhalf],range(1,nx+1))
 	ax_crossy.set_ylim([0, nx])
 
+def readAndPlot(component, filename):
+
+	image, nx = readImageFile(filename, component)
+	printImageValues(image,nx)
+	plotImageXsecs(image,nx, component)
+
+
 def main():
 
-	component = "Toroidal"
-	uimage, unx = readImageFile("./output/uvel_1000.data", component)
-	printImageValues(uimage,unx)
-	plotImageXsecs(uimage,unx, component)
+    readAndPlot("Toroidal", "./output/uvel_1000.data")
+    readAndPlot("Poloidal", "./output/vvel_1000.data")
+    readAndPlot("Radial", "./output/wvel_1000.data")
 
-	component = "Poloidal"
-	vimage, vnx = readImageFile("./output/vvel_1000.data", component)
-	printImageValues(vimage,vnx)
-	plotImageXsecs(vimage,vnx, component)
-
-	component = "Radial"
-	wimage, wnx = readImageFile("./output/wvel_1000.data", component)
-	printImageValues(wimage,wnx)
-	plotImageXsecs(wimage,wnx, component)
-
-	plt.show()
+    plt.show()
 		
-	quit()
+    quit()
 
 
 if __name__ == '__main__':

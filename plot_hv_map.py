@@ -122,28 +122,27 @@ def plotQuiver(uimage, vimage, nx, cN):
 	ax.set_xlabel("x-pixel")
 	ax.set_ylabel("y-pixel")
 
+def readAndPlot(component, filename):
 
-
+    image, nx = readImageFile(filename, component)
+    printImageValues(image,nx)
+    plotImageXsecs(image,nx, component)
+	
+    return image, nx
+    
 def main():
 
-	component = "Toroidal"
-	uimage, unx = readImageFile("./output/uvel_9000.data", component)
-	printImageValues(uimage,unx)
-	plotImageXsecs(uimage,unx, component)
+    uimage, unx = readAndPlot("Toroidal", "./output/uvel_9000.data")
+    vimage, vnx = readAndPlot("Poloidal", "./output/vvel_9000.data")
 
-	component = "Poloidal"
-	vimage, vnx = readImageFile("./output/vvel_9000.data", component)
-	printImageValues(vimage,vnx)
-	plotImageXsecs(vimage,vnx, component)
+    nx = CheckImageDims(unx,vnx)
 
-	nx = CheckImageDims(unx,vnx)
+    # Make quiver plot of central cNxcN region
+    cN = 64
+    plotQuiver(uimage, vimage, nx, cN)
 
-	# Make quiver plot of central cNxcN region
-	cN = 64
-	plotQuiver(uimage, vimage, nx, cN)
-
-	plt.show()
-	quit()
+    plt.show()
+    quit()
 
 
 if __name__ == '__main__':
