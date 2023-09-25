@@ -105,9 +105,9 @@ While the axisymmetric flows can be clearly seen on the global maps, the supergr
 
 ## Concluding Remarks
 
-The operation and output of this demonstration program has been described. Forthcoming steps include:
+The operation and output of this demonstration program have been described. Forthcoming steps include:
 - producing a time-series of evolving images to be compiled into a movie,
-- using the horizontal vector velocities to advect an array of 'floating corks' to simulated the structure of the Sun's chromospheric network,
+- using the horizontal vector velocities to advect an array of 'floating corks' to simulate the structure of the Sun's chromospheric network,
 - interpolate the maps to the observable disk view of the Sun, project the three velocity maps onto the line-of-sight and sum all three to produce sets simulated Doppler images of the Sun, similar to those observed by SOHO/MDI, and produced by Hathaway and his teams of researchers over the years.
 
 ## References
